@@ -1,3 +1,11 @@
+.data 
+	input: .string "Enter the number: "
+	final: .string "The factorial is: "
+
+.text
+la a0,input
+li a7,4
+ecall
 li a7,5
 ecall
 
@@ -32,7 +40,9 @@ multiply_proc:
 	
 	
 exit_loop:
-	
+	la a0,final
+	li a7,4
+	ecall
 	addi a0,s5,0
 	li a7,1
 	ecall
