@@ -1,7 +1,10 @@
 .data 
+	tell: .string "The postfix of the infix string 'a+b-c*d/e+f' is: "
 	infix: .string "a+b-c*d/e+f"
-	postfix: .string ""
 .text
+	la a0,tell
+	li a7,4
+	ecall
 	addi s6,sp,0
 	la t1, infix
 	li t4,0
