@@ -1,7 +1,13 @@
 .data 
 	Array: .word 1000
-	
+	sorted: .string "The array is : "
+	input: .string "Enter the number to search : "
+	out_found: .string "Number found!"
+	out_not_found: .string "Number not found!"
 .text
+	la a0,sorted
+	li a7,4
+	ecall
 	la t1,Array
 	
 	li a0,1
@@ -19,7 +25,29 @@
 	li a0,10
 	sw a0,0(t1)
 	
-	li a1,6
+	li t1,0
+	li s0,16
+	loop1:
+		beq t1,s0,continue2
+		la s1,Array
+		add t2,s1,t1
+		lw a0,(t2)
+		li a7,1
+		ecall
+		li a0,32
+		li a7,11
+		ecall
+		addi t1,t1,4
+		j loop1
+	continue2:	
+	
+	la a0,input
+	li a7,5
+	ecall
+	
+	li a7,5
+	ecall
+	addi a1,a0,0
 	
 	li t1,0
 	addi s0,t1,3
