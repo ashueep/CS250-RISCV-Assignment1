@@ -1,9 +1,9 @@
 .data 
 	Array: .word 1000
 	sorted: .string "The array is : "
-	input: .string "Enter the number to search : "
-	out_found: .string "Number found!"
-	out_not_found: .string "Number not found!"
+	input: .string "\nEnter the number to search : "
+	out_found: .string "\nNumber found!"
+	out_not_found: .string "\nNumber not found!"
 .text
 	la a0,sorted
 	li a7,4
@@ -42,7 +42,7 @@
 	continue2:	
 	
 	la a0,input
-	li a7,5
+	li a7,4
 	ecall
 	
 	li a7,5
@@ -74,8 +74,14 @@ c3:
 	j bsearch
 	
 found:
-	li s8,1
+	la a0,out_found
+	li a7,4
+	ecall
+	j exit
 
 not_found:
-	li s9,1
+	la a0,out_not_found
+	li a7,4
+	ecall
 
+exit:
